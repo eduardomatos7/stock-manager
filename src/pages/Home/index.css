@@ -97,3 +97,8 @@ th {
     border: none;
     cursor: pointer;
 }
+
+.algnAbs {
+    position: absolute;
+    margin-left: 1rem;
+}

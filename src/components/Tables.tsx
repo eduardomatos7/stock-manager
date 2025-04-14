@@ -37,17 +37,17 @@ function Tables() {
 
                             <tr>
                                 <td>7 Wonders</td>
-                                <td>8</td>
+                                <td className="algnAbs">8</td>
                                 <td><button className='btnSee'>Ver</button></td>
                             </tr>
                             <tr>
                                 <td>7 Wonders</td>
-                                <td>8</td>
+                                <td className='algnAbs'>8</td>
                                 <td><button className='btnSee'>Ver</button></td>
                             </tr>
                             <tr>
                                 <td>7 Wonders</td>
-                                <td>8</td>
+                                <td className='algnAbs'>8</td>
                                 <td><button className='btnSee'>Ver</button></td>
                             </tr>
                             </tbody>

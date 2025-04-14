@@ -7,3 +7,21 @@
 body {
   background-color: #383838;
 }
+
+#error-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: white;
+  gap: 1rem;
+  font-size: 1.5rem;
+  text-align: center;
+
+  & > p {
+    font-size: 1rem;
+    color: #ccc;
+    line-height: 1.5;
+  }
+}
