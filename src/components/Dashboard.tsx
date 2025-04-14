@@ -1,8 +1,9 @@
 import "../pages/Home/index.css"
+import Title from "./Title"
 function Dashboard() {
   return (
     <>
-    <h1 className='title'>Dashboard</h1>
+    <Title title="Dashboard"/>
                 <div className='cards'>
                     <div className='card'>
                         <p>Diversidade de itens</p>
