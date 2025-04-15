@@ -25,3 +25,8 @@
 .btnDel {
     background-color: #ff4242;
 }
+
+.containerListItem {
+    max-height: 22rem;
+    overflow-y: auto;
+}
