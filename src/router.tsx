@@ -4,6 +4,7 @@ import Items from "./pages/Items/Items";
 import ErrorPage from "./ErrorBoundary";
 import RootLayout from "./pages/RootLayout";
 import NewItem from "./components/NewItem";
+import ListItem from "./components/ListItem";
 
 
 const router = createBrowserRouter([
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
                     {
                         path: "newItem",
                         element: <NewItem/>
+                    },
+                    {
+                        path: "listItems",
+                        element: <ListItem/>
                     }
                 ]
             },
