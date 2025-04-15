@@ -1,22 +1,32 @@
+import { StockContext } from "../../contexts/StockContext"
 import "./index.css"
-import { useState } from "react"
+import { useContext, useState } from "react"
+
+
 function NewItem() {
   const [name, setName] = useState("")
-  const [qntd, setQntd] = useState<number>()
-  const [price, setPrice] = useState<number>()
+  const [qntd, setQntd] = useState<number>(0)
+  const [price, setPrice] = useState<number>(0)
   const [category, setCategory] = useState<string[]>([])
   const [description, setDescription] = useState("")
+  const { addItem } = useContext(StockContext)
 
   function onSubmit(e: React.FormEvent<HTMLFormElement>, ) {
     e.preventDefault()
     const data = {
-      name,
-      qntd,
-      price,
-      category,
-      description
+      id: crypto.randomUUID(),
+      nome: name,
+      quantidade: qntd,
+      preco: price,
+      categoria: category.join(", "),
+      descricao: description
     }
-    console.log(data)
+    addItem(data)
+    setName("")
+    setQntd(0)
+    setPrice(0)
+    setCategory([])
+    setDescription("")
   }
   return (
     <>
