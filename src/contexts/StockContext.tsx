@@ -1,15 +1,30 @@
 import React, { createContext, useState } from "react"
 import { Item } from "../iterfaces/Item"
-export const StockContext = createContext({})
 
-function StockContextProvider({ children }: { children: React.ReactNode }) {
-    const [item, setItem] = useState<Item>()
-
-  return (
-    <StockContext.Provider value={{item}}>
-        {children}
-    </StockContext.Provider>
-  )
+interface StockContextType {
+  items: Item[];
+  addItem: (item: Item) => void;
 }
 
-export default StockContextProvider
+export const StockContext = createContext({} as StockContextType);
+
+function StockContextProvider({ children }: { children: React.ReactNode }) {
+  const [items, setItems] = useState<Item[]>(localStorage.getItem("items") ? JSON.parse(localStorage.getItem("items")!) : [])
+
+  function addItem(item: Item) {
+    setItems((prevItems) => {
+      const updatedItems = [...prevItems, item];
+      localStorage.setItem("items", JSON.stringify(updatedItems));
+      return updatedItems;
+    })
+    console.log("Item added:", item);
+  }
+
+  return (
+    <StockContext.Provider value={{ items, addItem }}>
+      {children}
+    </StockContext.Provider>
+  );
+}
+
+export default StockContextProvider;
