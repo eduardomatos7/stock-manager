@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import Items from "./pages/Items/Items";
 import ErrorPage from "./ErrorBoundary";
 import RootLayout from "./pages/RootLayout";
+import NewItem from "./components/NewItem";
 
 
 const router = createBrowserRouter([
@@ -18,8 +19,14 @@ const router = createBrowserRouter([
             },
             {
                 path: "/items",
-                element: <Items/>
-            }
+                element: <Items/>,
+                children: [
+                    {
+                        path: "newItem",
+                        element: <NewItem/>
+                    }
+                ]
+            },
         ]
     },
     
