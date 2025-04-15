@@ -5,8 +5,8 @@ import { useContext, useState } from "react"
 
 function NewItem() {
   const [name, setName] = useState("")
-  const [qntd, setQntd] = useState<number>(0)
-  const [price, setPrice] = useState<number>(0)
+  const [qntd, setQntd] = useState<number>()
+  const [price, setPrice] = useState<number>()
   const [category, setCategory] = useState<string[]>([])
   const [description, setDescription] = useState("")
   const { addItem } = useContext(StockContext)
@@ -16,12 +16,13 @@ function NewItem() {
     const data = {
       id: crypto.randomUUID(),
       nome: name,
-      quantidade: qntd,
-      preco: price,
+      quantidade: qntd!,
+      preco: price!,
       categoria: category.join(", "),
       descricao: description
     }
     addItem(data)
+    alert("Item adicionado com sucesso!")
     setName("")
     setQntd(0)
     setPrice(0)
@@ -53,11 +54,11 @@ function NewItem() {
         placeholder="Selecione uma categoria..." value={category.join(", ")} 
         onChange={(e) => setCategory(e.target.value.split(",").map(item => item.trim()))}/>
         <datalist id="category">
-          <option value="Teste1" />
-          <option value="Teste2" />
-          <option value="Teste3" />
-          <option value="Teste4" />
-          <option value="Teste5" />
+          <option value="Livro" />
+          <option value="Quadro" />
+          <option value="Jogos" />
+          <option value="Alimento" />
+          <option value="Outros" />
         </datalist>
         </div>
         </div>
