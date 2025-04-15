@@ -5,6 +5,7 @@ interface StockContextType {
   items: Item[];
   addItem: (item: Item) => void;
   setItems: (items: Item[]) => void;
+  deleteItem: (id: string) => void;
 }
 
 export const StockContext = createContext({} as StockContextType);
@@ -20,9 +21,13 @@ function StockContextProvider({ children }: { children: React.ReactNode }) {
     })
     console.log("Item added:", item);
   }
-
+  function deleteItem(id: string) {
+    const itemsRemoved = items.filter(item => item.id !== id)
+    setItems(itemsRemoved)
+    localStorage.setItem("items", JSON.stringify(itemsRemoved))
+}
   return (
-    <StockContext.Provider value={{ items, addItem, setItems }}>
+    <StockContext.Provider value={{ items, addItem, setItems, deleteItem }}>
       {children}
     </StockContext.Provider>
   );
