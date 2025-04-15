@@ -1,6 +1,10 @@
+import { useContext } from "react"
 import "./index.css"
+import { StockContext } from "../../contexts/StockContext"
 
 function ListItem() {
+const { items } = useContext(StockContext)
+  
   return (
     <div className="containerListItem">
       <table>
@@ -14,11 +18,12 @@ function ListItem() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>a1o3l2ws-ak34sidi-sk213mnxh</td>
-            <td>Maraca</td>
-            <td className="algnAbs">128 unid.</td>
-            <td>Livros</td>
+          { items.map((item) => (
+          <tr key={item.id}>
+            <td>{item.id}</td>
+            <td>{item.nome}</td>
+            <td className="algnAbs">{item.quantidade} unid.</td>
+            <td>{item.categoria}</td>
             <td>
               <div className="btnsAlign">
               <button className='btnSee bd'>Ver</button>
@@ -26,20 +31,7 @@ function ListItem() {
               <button className='btnDel bd'>Excluir</button>
               </div>
             </td>
-          </tr>
-          <tr>
-          <td>aolws-aksidi-skmnxh</td>
-            <td>7 Wonders</td>
-            <td className="algnAbs">8 unid.</td>
-            <td>Jogos</td>
-            <td>
-              <div className="btnsAlign">
-              <button className='btnSee bd'>Ver</button>
-              <button className='btnUpdate bd'>Atualizar</button>
-              <button className='btnDel bd'>Excluir</button>
-              </div>
-            </td>
-          </tr>
+          </tr>))}
         </tbody>
       </table>
     </div>
