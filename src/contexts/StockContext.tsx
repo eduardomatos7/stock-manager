@@ -4,6 +4,7 @@ import { Item } from "../iterfaces/Item"
 interface StockContextType {
   items: Item[];
   addItem: (item: Item) => void;
+  setItems: (items: Item[]) => void;
 }
 
 export const StockContext = createContext({} as StockContextType);
@@ -21,7 +22,7 @@ function StockContextProvider({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <StockContext.Provider value={{ items, addItem }}>
+    <StockContext.Provider value={{ items, addItem, setItems }}>
       {children}
     </StockContext.Provider>
   );
