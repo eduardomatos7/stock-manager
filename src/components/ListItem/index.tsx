@@ -1,10 +1,11 @@
 import { useContext } from "react"
 import "./index.css"
 import { StockContext } from "../../contexts/StockContext"
+import { DeleteItem } from "../../utils/crud"
 
 function ListItem() {
-const { items } = useContext(StockContext)
-  
+const { items, setItems } = useContext(StockContext)
+
   return (
     <div className="containerListItem">
       <table>
@@ -28,7 +29,7 @@ const { items } = useContext(StockContext)
               <div className="btnsAlign">
               <button className='btnSee bd'>Ver</button>
               <button className='btnUpdate bd'>Atualizar</button>
-              <button className='btnDel bd'>Excluir</button>
+              <button className='btnDel bd' onClick={() =>DeleteItem(item.id, items, setItems)}>Excluir</button>
               </div>
             </td>
           </tr>))}
