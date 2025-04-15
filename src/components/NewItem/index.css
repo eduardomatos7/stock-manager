@@ -1,14 +1,18 @@
 .navListNew {
     display: flex;
     gap: 1rem;
+    height: 1.5rem;
 }
 
-.navListNew a.active {
-    color: #42ff81; 
+.navListNew li:first-child {
+    border-right: #ffffff 1px solid;
+    padding-right: 1rem;
+}
+
+.active {
+    color: #42ff81;
     border-bottom: 2px solid #42ff81;
-    position: absolute;
-    padding-bottom: 5px;
-    font-weight: bold;
+    padding-bottom: 2.5rem;
 }
 
 nav {

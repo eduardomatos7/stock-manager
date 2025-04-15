@@ -1,0 +1,27 @@
+.containerListItem {
+    margin-top: 2rem;
+}
+
+.btnsAlign {
+    display: flex;
+    gap: 1rem;
+}
+
+.bd {
+    padding: .25rem .75rem;
+    border: none;
+    border-radius: .1rem;
+    cursor: pointer;
+}
+
+.btnSee {
+    background-color: #42ff81;
+}
+
+.btnUpdate {
+    background-color: #ffffff;
+}
+
+.btnDel {
+    background-color: #ff4242;
+}

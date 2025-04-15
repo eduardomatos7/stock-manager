@@ -1,0 +1,13 @@
+.noSelect {
+    color: #fff;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: auto;
+    width: 100%;
+    display: grid;
+    place-content: center;
+    text-align: center;
+    gap: 1rem;
+}
