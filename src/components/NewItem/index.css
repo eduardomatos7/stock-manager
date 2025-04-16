@@ -90,3 +90,10 @@ input::placeholder {
     font-size: .9rem;
     text-align: center;
 }
+
+.updateTitle {
+    color: #fff;
+    margin-top: 1rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 300;
+}
