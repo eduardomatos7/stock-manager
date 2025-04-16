@@ -32,7 +32,7 @@ function ShowDetails() {
                 <p><strong>Preço:</strong> R$ {typeof item.preco === "number" ? item.preco.toFixed(2).replace(".", ",") : parseFloat(item.preco).toFixed(2).replace(".", ",")}</p>
             </div>
             <div className={styles.description}>
-                <p><strong>Descrição:</strong> {item.descricao}</p>
+                <p><strong>Descrição:</strong> { item.descricao ? item.descricao : "Nenhuma descrição fornecida"}</p>
             </div>
             <div className={styles.date}>
                 <p>Cadastrado em: {item.dataCadastro}</p>
