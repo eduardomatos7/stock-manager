@@ -11,13 +11,15 @@ interface StockContextType {
   editItemId: string | null
   setEditItemId: (editItemId: string | null) => void;
   editItemFunc: (id: string, uptadeItem: Item) => void;
-  
+  itemsIndDate: Item[]
+  itemsOut: Item[]
 }
 
 export const StockContext = createContext({} as StockContextType);
 
 function StockContextProvider({ children }: { children: React.ReactNode }) {
-  const [items, setItems] = useState<Item[]>(localStorage.getItem("items") ? JSON.parse(localStorage.getItem("items")!) : [])
+  const [items, setItems] = useState<Item[]>(localStorage.getItem("items") ? 
+  JSON.parse(localStorage.getItem("items")!) : [])
   const [editItem, setEditItem] = useState(false)
   const [editItemId, setEditItemId] = useState<string | null>(null)
   function addItem(item: Item) {
@@ -48,9 +50,31 @@ function StockContextProvider({ children }: { children: React.ReactNode }) {
       }
     })
   }
+  const dateCurrent = new Date().toLocaleDateString('pt-BR').split('/')[0]
+
+    const itemsIndDate = items.filter((item) => {
+        const itemsValid = item.dataCadastro.split('/')[0]
+        return Number(dateCurrent) - Number(itemsValid) <= 10
+    })
+    
+    const itemsOut = items.filter((item) => {
+        const itemsValid = item.quantidade
+        return Number(itemsValid) < 10
+    })
 
   return (
-    <StockContext.Provider value={{ items, addItem, setItems, deleteItem, editItem, setEditItem, editItemId, setEditItemId, editItemFunc }}>
+    <StockContext.Provider value={{ 
+      items, 
+      addItem, 
+      setItems, 
+      deleteItem, 
+      editItem, 
+      setEditItem, 
+      editItemId, 
+      setEditItemId, 
+      editItemFunc, 
+      itemsIndDate, 
+      itemsOut }}>
       {children}
     </StockContext.Provider>
   );
