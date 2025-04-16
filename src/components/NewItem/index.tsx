@@ -1,16 +1,28 @@
 import { StockContext } from "../../contexts/StockContext"
 import "./index.css"
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 
 
 function NewItem() {
-  const [name, setName] = useState("")
-  const [qntd, setQntd] = useState<number>()
-  const [price, setPrice] = useState<number>()
-  const [category, setCategory] = useState<string[]>([])
-  const [description, setDescription] = useState("")
-  const { addItem } = useContext(StockContext)
+  const { addItem, editItem, setEditItem, items, editItemId, editItemFunc, setEditItemId } = useContext(StockContext)
+  const itemToEdit = items.find(item => item.id === editItemId)
 
+  const [name, setName] = useState(itemToEdit?.nome || "")
+  const [qntd, setQntd] = useState<number>(itemToEdit?.quantidade || 0)
+  const [price, setPrice] = useState<number>(itemToEdit?.preco || 0)
+  const [category, setCategory] = useState<string[]>(itemToEdit?.categoria?.split(", ").map(item => item.trim()) || [])
+  const [description, setDescription] = useState(itemToEdit?.descricao || "")
+  
+  useEffect(() => {
+    if (editItemId === null) {
+      setName("")
+      setQntd(0)
+      setPrice(0)
+      setCategory([])
+      setDescription("")
+     }
+  },[editItemId])
+  
   function onSubmit(e: React.FormEvent<HTMLFormElement>, ) {
     e.preventDefault()
     const data = {
@@ -21,16 +33,28 @@ function NewItem() {
       categoria: category.join(", "),
       descricao: description
     }
-    addItem(data)
-    alert("Item adicionado com sucesso!")
+    if (editItem){
+      editItemFunc(itemToEdit?.id!, data)
+      setEditItemId(null)
+      alert("Item atualizado com sucesso!")
+    } else { 
+      addItem(data)
+      setEditItemId(null)
+      console.log(editItemId)
+      alert("Item adicionado com sucesso!")
+
+    }
+    
     setName("")
     setQntd(0)
     setPrice(0)
     setCategory([])
     setDescription("")
+    setEditItem(false)
   }
   return (
     <>
+    {editItem && editItemId !== null &&<h3 className="updateTitle">Atualizar Item - {itemToEdit?.nome}</h3>}
       <form onSubmit={onSubmit} className="containerForm">
         <div className="content">
         <div className="inputGroup">
