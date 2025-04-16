@@ -8,18 +8,19 @@ function NewItem() {
   const itemToEdit = items.find(item => item.id === editItemId)
 
   const [name, setName] = useState(itemToEdit?.nome || "")
-  const [qntd, setQntd] = useState<number>(itemToEdit?.quantidade || 0)
-  const [price, setPrice] = useState<number>(itemToEdit?.preco || 0)
+  const [qntd, setQntd] = useState<number | string>(itemToEdit?.quantidade || "")
+  const [price, setPrice] = useState<number | string >(itemToEdit?.preco || "")
   const [category, setCategory] = useState<string[]>(itemToEdit?.categoria?.split(", ").map(item => item.trim()) || [])
   const [description, setDescription] = useState(itemToEdit?.descricao || "")
   
   useEffect(() => {
     if (editItemId === null) {
       setName("")
-      setQntd(0)
-      setPrice(0)
+      setQntd("")
+      setPrice("")
       setCategory([])
       setDescription("")
+      setEditItem(false)
      }
   },[editItemId])
   
@@ -31,7 +32,9 @@ function NewItem() {
       quantidade: qntd!,
       preco: price!,
       categoria: category.join(", "),
-      descricao: description
+      descricao: description,
+      dataCadastro: new Date().toLocaleDateString("pt-BR"),
+      dataAtualizacao: new Date().toLocaleDateString("pt-BR"),
     }
     if (editItem){
       editItemFunc(itemToEdit?.id!, data)
@@ -46,8 +49,8 @@ function NewItem() {
     }
     
     setName("")
-    setQntd(0)
-    setPrice(0)
+    setQntd("")
+    setPrice("")
     setCategory([])
     setDescription("")
     setEditItem(false)
@@ -64,12 +67,12 @@ function NewItem() {
         </div>
         <div className="inputLabel">
         <label id="qntd">Quantidade</label>
-        <input type="number" name="qntd" value={qntd} onChange={(e) => setQntd(+e.target.value)}/>
+        <input type="number" name="qntd" value={qntd} onChange={(e) => setQntd(e.target.value)}/>
 
         </div>
         <div className="inputLabel">
         <label id="price">Preço</label>
-        <input type="number" name="price" value={price} onChange={(e) => setPrice(+e.target.value)}/>
+        <input type="number" name="price" value={price} onChange={(e) => setPrice(e.target.value)}/>
 
         </div>
         <div className="inputLabel">
