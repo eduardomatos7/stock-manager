@@ -5,7 +5,7 @@ import ErrorPage from "./ErrorBoundary";
 import RootLayout from "./pages/RootLayout";
 import NewItem from "./components/NewItem";
 import ListItem from "./components/ListItem";
-
+import ShowDetails from "./components/ShowDetails/ShowDetails.tsx";
 
 const router = createBrowserRouter([
     {
@@ -28,7 +28,11 @@ const router = createBrowserRouter([
                     },
                     {
                         path: "listItems",
-                        element: <ListItem/>
+                        element: <ListItem/>,
+                    },
+                    {
+                        path: "listItems/:itemId",
+                        element: <ShowDetails/>
                     }
                 ]
             },
