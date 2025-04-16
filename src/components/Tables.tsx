@@ -1,26 +1,29 @@
 import { useContext } from "react"
 import { StockContext } from "../contexts/StockContext"
+import { Link } from "react-router-dom"
 
 function Tables() {
-    const { items } = useContext(StockContext)
+    const { itemsIndDate, itemsOut } = useContext(StockContext)
     return (
         <div className="sectionsToDetails">
             <div className="itemsRecent">
                 <table className='tableRecent'>
                     <thead>
                         <tr >
-                            <th>Itens recentes</th>
+                            <th>Itens recentes (adicionados nos últimos 10 dias)</th>
                             <th>Ações</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {items.map((item) => {
+                        {itemsIndDate.map((item) => {
                             return <tr className="bgTr" key={item.id}>
                                 <td>{item.nome}</td>
-                                <td><button className='btnSee'>Ver</button></td>
+                                <td><button className='btnSee'><Link 
+                                            to={`/items/listItems/${item.id}`} 
+                                            style={{textDecoration: 'none', color: "#000"}}
+                                            >Ver</Link></button></td>
                             </tr>
                         })
-
                         }
                     </tbody>
                 </table>
@@ -35,16 +38,19 @@ function Tables() {
                         </tr>
                     </thead>
                     <tbody>
-                        {items.map((item ) => {
-                            return <tr className="bgTr">
-                            <td>{item.nome}</td>
-                            <td className="algnAbs">{item.quantidade}</td>
-                            <td><button className='btnSee'>Ver</button></td>
-                        </tr>
+                        {itemsOut.map((item) => {
+                            return <tr className="bgTr" key={item.id}>
+                                <td>{item.nome}</td>
+                                <td className="algnAbs">{item.quantidade}</td>
+                                <td><button className='btnSee'><Link 
+                                to={`/items/listItems/${item.id}`} 
+                                style={{textDecoration: 'none', color: "#000"}}
+                                >Ver</Link></button></td>
+                            </tr>
                         })
-                       
+
                         }
-                        
+
                     </tbody>
                 </table>
             </div>
