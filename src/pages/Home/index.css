@@ -37,9 +37,9 @@ li {
 }
 
 .cards {
-    margin-top: 2rem;
+    margin-top: 1.5rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(150px, .5fr));
     gap: 2rem;
 }
 
@@ -48,7 +48,7 @@ li {
     flex-direction: column;
     gap: 1rem;
     background-color: #1C1A1D;
-    padding: 1.5rem 1rem;
+    padding: 1rem 1rem;
     border-radius: .25rem;
     color: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -109,4 +109,15 @@ th {
     color: #1C1A1D;
     border: none;
     cursor: pointer;
+}
+.itemsRecent, .itemsOut {
+    max-height: 16rem;
+    overflow-y: auto;
+}
+
+.bgTr{
+    transition: all .1s ease-in-out;
+&:hover {
+    background-color: #434343;
+}
 }
