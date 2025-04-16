@@ -1,9 +1,10 @@
 import { useContext } from "react"
 import "./index.css"
 import { StockContext } from "../../contexts/StockContext"
+import { Link } from "react-router-dom"
 
 function ListItem() {
-const { items, deleteItem } = useContext(StockContext)
+const { items, deleteItem, setEditItem, setEditItemId} = useContext(StockContext)
 
   return (
     <div className="containerListItem">
@@ -27,11 +28,18 @@ const { items, deleteItem } = useContext(StockContext)
             <td>
               <div className="btnsAlign">
               <button className='btnSee bd'>Ver</button>
-              <button className='btnUpdate bd'>Atualizar</button>
+              <button className='btnUpdate bd'><Link to="/items/newItem" 
+              onClick={()=> {
+                setEditItem(true); 
+                setEditItemId(item.id);
+              }}
+              style={{textDecoration: 'none', color: '#000'}}
+              >Atualizar</Link></button>
               <button className='btnDel bd' onClick={() => deleteItem(item.id)}>Excluir</button>
               </div>
             </td>
-          </tr>))}
+          </tr>
+          ))}
         </tbody>
       </table>
     </div>
