@@ -1,12 +1,14 @@
 import { Link, Outlet, useLocation } from "react-router-dom"
 import Title from "../../components/Title"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import "./items.css"
+import { StockContext } from "../../contexts/StockContext";
 
 function Items() {
   const location = useLocation();
   const [activeListItem, setActiveListItem] = useState(false);
   const [activeNewItem, setActiveNewItem] = useState(false);
+  const { setEditItemId } = useContext(StockContext)
 
   useEffect(() => {
     if (location.pathname.endsWith("listItems")) {
@@ -34,7 +36,7 @@ function Items() {
           </li>
           <li>
             <Link to="newItem" className={activeNewItem ? "active" : ""}
-            onClick={() => (setActiveNewItem(true), setActiveListItem(false))}
+            onClick={() => (setActiveNewItem(true), setActiveListItem(false), setEditItemId(null))}
             >Novo item</Link>
           </li>
         </ul>
