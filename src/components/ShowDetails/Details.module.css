@@ -1,0 +1,59 @@
+.contentDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.titleItem {
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: 300;
+}
+
+.headerDetails {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+.btnUpdateDetails, .handleDeleteBtn {
+    padding: 0.3rem 0;
+    border-radius: 0.1rem;
+    border: none;
+    text-decoration: none;
+    color: #000;
+}
+
+.handleDeleteBtn {
+    background-color: #f44336;
+}
+
+.details {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+
+    & > p {
+        padding: .8rem 1.3rem;
+        background-color: #1f1f1f;
+        color: #fff;
+        border-radius: .5rem;
+        transition: all 0.1s ease-in-out;
+        box-shadow:  1px 1px 5px #00000080;
+    &:hover {
+        background-color: #2f2f2f;
+        transform: scale(1.02);
+    }
+}
+}
+.description {
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 400;
+}
+.date {
+    display: flex;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 400;
+    gap: 2rem;
+}
