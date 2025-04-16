@@ -12,7 +12,6 @@ function NewItem() {
   const [price, setPrice] = useState<number | string >(itemToEdit?.preco || "")
   const [category, setCategory] = useState<string[]>(itemToEdit?.categoria?.split(", ").map(item => item.trim()) || [])
   const [description, setDescription] = useState(itemToEdit?.descricao || "")
-  
   useEffect(() => {
     if (editItemId === null) {
       setName("")
@@ -63,22 +62,22 @@ function NewItem() {
         <div className="inputGroup">
         <div className="inputLabel">
         <label id="name">Nome</label>
-        <input type="text" name="name" value={name} onChange={(e) => setName(e.target.value)} />
+        <input type="text" name="name" required value={name} onChange={(e) => setName(e.target.value)} />
         </div>
         <div className="inputLabel">
         <label id="qntd">Quantidade</label>
-        <input type="number" name="qntd" value={qntd} onChange={(e) => setQntd(e.target.value)}/>
+        <input type="number" name="qntd" required value={qntd} onChange={(e) => setQntd(e.target.value)}/>
 
         </div>
         <div className="inputLabel">
         <label id="price">Preço</label>
-        <input type="number" name="price" value={price} onChange={(e) => setPrice(e.target.value)}/>
+        <input type="number" name="price" required value={price} onChange={(e) => setPrice(e.target.value)}/>
 
         </div>
         <div className="inputLabel">
         <label id="categoryIpt">Categoria</label>
         <input type="text" name="categoryIpt" list="category" 
-        placeholder="Selecione uma categoria..." value={category.join(", ")} 
+        placeholder="Selecione uma categoria..." required value={category.join(", ")} 
         onChange={(e) => setCategory(e.target.value.split(",").map(item => item.trim()))}/>
         <datalist id="category">
           <option value="Livro" />

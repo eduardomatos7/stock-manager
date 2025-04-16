@@ -20,7 +20,7 @@ const { items, deleteItem, setEditItem, setEditItemId} = useContext(StockContext
         </thead>
         <tbody>
           { items.map((item) => (
-          <tr key={item.id}>
+          <tr className="bgTr" key={item.id}>
             <td>{item.id}</td>
             <td>{item.nome}</td>
             <td className="algnAbs">{item.quantidade} unid.</td>
