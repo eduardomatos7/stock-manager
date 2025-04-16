@@ -32,6 +32,7 @@ function StockContextProvider({ children }: { children: React.ReactNode }) {
     const itemsRemoved = items.filter(item => item.id !== id)
     setItems(itemsRemoved)
     localStorage.setItem("items", JSON.stringify(itemsRemoved))
+    alert("Item excluído!")
 }
   function editItemFunc(id: string, uptadeItem: Item) {
       items.find(item => {
@@ -41,6 +42,7 @@ function StockContextProvider({ children }: { children: React.ReactNode }) {
         item.preco = uptadeItem.preco
         item.categoria = uptadeItem.categoria
         item.descricao = uptadeItem.descricao
+        item.dataAtualizacao = uptadeItem.dataAtualizacao
         localStorage.setItem("items", JSON.stringify(items))
         return 
       }

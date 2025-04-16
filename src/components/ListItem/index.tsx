@@ -27,7 +27,8 @@ const { items, deleteItem, setEditItem, setEditItemId} = useContext(StockContext
             <td>{item.categoria}</td>
             <td>
               <div className="btnsAlign">
-              <button className='btnSee bd'>Ver</button>
+              <button className='btnSee bd'><Link 
+              to={`/items/listItems/${item.id}`} style={{textDecoration: 'none', color: "#000"}}>Ver</Link></button>
               <button className='btnUpdate bd'><Link to="/items/newItem" 
               onClick={()=> {
                 setEditItem(true); 
