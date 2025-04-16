@@ -1,10 +1,11 @@
-import { Link, Outlet, useLocation } from "react-router-dom"
+import { Link, Outlet, useLocation, useParams } from "react-router-dom"
 import Title from "../../components/Title"
 import { useState, useEffect, useContext } from "react"
 import "./items.css"
 import { StockContext } from "../../contexts/StockContext";
-
+import ShowDetails from "../../components/ShowDetails/ShowDetails";
 function Items() {
+  const { itemId } = useParams()
   const location = useLocation();
   const [activeListItem, setActiveListItem] = useState(false);
   const [activeNewItem, setActiveNewItem] = useState(false);
@@ -43,12 +44,24 @@ function Items() {
       </nav>
       <hr/>
       
-      {(activeListItem === false && activeNewItem === false) ? 
-      <div className="noSelect">
-        <h3>Para adicionar um novo item ou ver todos os itens, clique no menu correspondente acima.</h3>
-        <p>qui você poderá visualizar todos os itens já adicionados, além de editar, excluir e adicionar novos itens.</p>
-      </div>
-      : <Outlet/>}
+      {(activeListItem === false && activeNewItem === false) ? (
+        location.pathname.endsWith(`listItems/${itemId}`) ? (
+          itemId ? (
+            <ShowDetails />
+          ) : (
+            <div className="container">
+              <h3 style={{color: "#fff"}}>Item não encontrado</h3>
+            </div>
+          )
+        ) : (
+          <div className="noSelect">
+            <h3>Para adicionar um novo item ou ver todos os itens, clique no menu correspondente acima.</h3>
+            <p>Aqui você poderá visualizar todos os itens já adicionados, além de editar, excluir e adicionar novos itens.</p>
+          </div>
+        )
+      ) : (
+        <Outlet />
+      )}
     </>
   )
 }
