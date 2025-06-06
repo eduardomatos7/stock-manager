@@ -10,7 +10,6 @@ function RootLayout() {
     <main>
         <Outlet/>
     </main>
-    <footer className="footer"><p>Feito com React e React Router!</p></footer>
     </div>
     </>
   )

@@ -39,6 +39,7 @@ li {
 .cards {
     margin-top: 1.5rem;
     display: grid;
+    justify-content: center;
     grid-template-columns: repeat(auto-fit, minmax(150px, .5fr));
     gap: 2rem;
 }
@@ -120,4 +121,27 @@ th {
 &:hover {
     background-color: #434343;
 }
+}
+
+@media screen and (min-width: 250px) and (max-width: 600px)  {
+   .title {
+    font-size: 2rem;
+   }
+    .cards {
+    grid-template-columns: repeat(auto-fit, minmax(120px, .5fr));
+   }
+   .card {
+    justify-content: space-between;
+   }
+   .card > p {
+    font-size: .9rem;
+   }
+   .card .cardValueItem {
+    font-size: 2rem;
+   }
+    .sectionsToDetails {
+        flex-direction: column;
+        margin: 3rem 0;
+        gap: 3rem;
+    }
 }
