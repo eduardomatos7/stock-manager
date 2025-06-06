@@ -6,8 +6,24 @@
     transform: translate(-50%, -50%);
     height: auto;
     width: 100%;
+    padding: 0 1.5rem;
     display: grid;
     place-content: center;
     text-align: center;
     gap: 1rem;
+}
+
+@media screen and (max-width: 650px) {
+    .hiddenDesktop {
+        margin: 1rem 0;
+        width: 100%;
+        font-size: 1.2rem;
+        color: white;
+        text-align: center;
+    }
+}
+@media screen and (min-width:651px) {
+    .hiddenDesktop {
+        display: none;
+    }
 }

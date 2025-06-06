@@ -97,3 +97,9 @@ input::placeholder {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 300;
 }
+
+@media screen and (max-width: 900px)  {
+    .inputGroup {
+        flex-direction: column;
+    }
+}

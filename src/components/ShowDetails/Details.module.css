@@ -57,3 +57,10 @@
     font-weight: 400;
     gap: 2rem;
 }
+
+@media screen and (max-width: 500px){
+    .details {
+        flex-direction: column;
+        justify-content: center;
+    }
+}
